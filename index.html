@@ -19,6 +19,7 @@
       --light-gray: #F5F5F5;
     }
     
+    
     body {
       background-color: #F5F5F5;
       color: #333;
@@ -166,6 +167,175 @@
     .whatsapp-btn:hover .whatsapp-tooltip {
       opacity: 1;
     }
+
+    /* Badge de notificación */
+.whatsapp-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff3b30;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse-badge 2s infinite;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.4);
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Chat interface */
+.whatsapp-chat {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-width: calc(100vw - 60px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 998;
+}
+
+.whatsapp-chat.active {
+  display: flex;
+}
+
+.chat-header {
+  background: #075E54;
+  color: white;
+  padding: 15px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.chat-status {
+  font-size: 12px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #4FCE5D;
+  border-radius: 50%;
+}
+
+.chat-close {
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.chat-close:hover {
+  opacity: 1;
+}
+
+.chat-body {
+  padding: 20px;
+  height: 300px;
+  overflow-y: auto;
+  background: #ECE5DD url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23D9D9D9" opacity="0.3"/></svg>');
+}
+
+.chat-message {
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-time {
+  font-size: 11px;
+  color: #667781;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.chat-footer {
+  padding: 15px;
+  background: #F0F0F0;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-send {
+  width: 45px;
+  height: 45px;
+  background: #25D366;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.chat-send:hover {
+  background: #20BA5A;
+}
 
     @media (max-width: 768px) {
       .hero-text-large {
@@ -547,14 +717,85 @@
       </div>
     </div>
   </footer>
+<!-- WhatsApp Floating Button con Badge -->
+<div class="whatsapp-btn" onclick="toggleChat()">
+  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.98 1.429 9.87 9.87 0 1013.992 9.874c0-2.647-.992-5.154-2.793-7.082A9.87 9.87 0 0012.051 6.979"/>
+  </svg>
+  <span class="whatsapp-badge">1</span>
+</div>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/50492137292?text=Hola%20Enerhnsys%2C%20quisiera%20cotizar%20la%20renta%20de%20equipos%20industriales" target="_blank" class="whatsapp-btn">
-    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.98 1.429 9.87 9.87 0 1013.992 9.874c0-2.647-.992-5.154-2.793-7.082A9.87 9.87 0 0012.051 6.979"/>
-    </svg>
-    <div class="whatsapp-tooltip">¿Necesitas ayuda?</div>
-  </a>
+<!-- Chat Interface -->
+<div class="whatsapp-chat" id="whatsappChat">
+  <div class="chat-header">
+    <div class="chat-avatar">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-zOgngHaea98pjwumCvYJuLyXA2DT54.png" alt="ENERHNSYS" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="chat-info">
+      <div class="chat-name">ENERHNSYS</div>
+      <div class="chat-status">
+        <span class="status-dot"></span>
+        En línea
+      </div>
+    </div>
+    <div class="chat-close" onclick="toggleChat()">&times;</div>
+  </div>
+  
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message">
+      ¡Hola! 👋 Bienvenido a ENERHNSYS.<br><br>
+      Somos especialistas en renta y mantenimiento de equipos industriales:<br>
+      🏗️ Montacargas<br>
+      📦 Plataformas elevadoras<br>
+      🔧 Mantenimiento preventivo<br>
+      ⚙️ Repuestos originales<br><br>
+      ¿En qué podemos ayudarte hoy?
+      <div class="chat-time">Ahora</div>
+    </div>
+  </div>
+  
+  <div class="chat-footer">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+    <button class="chat-send" onclick="sendMessage()">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById('whatsappChat');
+    chat.classList.toggle('active');
+    
+    // Ocultar el badge cuando se abre el chat
+    if (chat.classList.contains('active')) {
+      document.querySelector('.whatsapp-badge').style.display = 'none';
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (message) {
+      // Abrir WhatsApp con el mensaje
+      const phoneNumber = '50492137292';
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Limpiar input
+      input.value = '';
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+</script>
 
   <!-- SCRIPTS -->
   <script>
