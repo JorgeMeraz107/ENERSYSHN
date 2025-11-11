@@ -192,23 +192,32 @@
   </header>
 
   <!-- NAVIGATION BAR -->
-  <nav class="bg-teal-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <!-- Categories Dropdown -->
-        <button class="nav-category">
-          <span class="flex items-center gap-2">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+<nav class="bg-teal-500 relative z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      
+      <!-- Dropdown: Comprar por Categoría -->
+      <div class="relative group">
+        <button class="nav-category flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M3 6a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V6zm0 6a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"></path>
             </svg>
-            COMPRAR POR CATEGORÍA
-          </span>
+          COMPRAR POR CATEGORÍA
         </button>
+        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-lg shadow-lg mt-2 w-48">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Montacargas</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Plataformas</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Repuestos</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Herramientas</a>
+        </div>
+      </div>
 
         <!-- Main Navigation -->
         <div class="flex items-center gap-8">
           <a href="#" class="nav-category active">Inicio</a>
-          <a href="#" class="nav-category">Tienda</a>
+          <a href="#" class="nav-category">Tienda
+          </a>
+          
           <a href="#" class="nav-category">Blog</a>
           <a href="#" class="nav-category">Sobre Nosotros</a>
           <a href="#" class="nav-category">Contacto</a>
@@ -255,7 +264,7 @@
         <!-- Right Side - 2 Stacked Images -->
         <div class="space-y-4">
           <!-- Top Small Image -->
-          <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-32">
+          <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-36">
             <img 
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PALLETS-KtDCT5QtFrf1uMvi0kOpRhOT41jD8y.jpg" 
               alt="Pallet Jacks" 
