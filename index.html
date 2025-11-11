@@ -64,6 +64,42 @@
       font-weight: 700;
     }
 
+    /* Agregar estilos para dropdown con hover cyan */
+    .dropdown-menu {
+      position: absolute;
+      display: none;
+      background-color: white;
+      color: #333;
+      border-radius: 0px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin-top: 20px;
+      min-width: 200px;
+      z-index: 100;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 16px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+  
+    .dropdown-menu a:first-child:hover {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .dropdown-menu a:last-child:hover {
+      border-radius: 0 0 8px 8px;
+    }
+
+    .relative.group:hover .dropdown-menu {
+      display: block;
+    }
+    
+
     /* Heart icon hover animation */
     .heart-icon {
       transition: all 0.3s ease;
@@ -148,7 +184,7 @@
     <span class="text-gray-800">Envío Gratis Pedidos Mayores a L.80</span>
   </div>
 
-  <!-- HEADER -->
+ <!-- HEADER -->
   <header class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-4">
@@ -204,20 +240,28 @@
             </svg>
           COMPRAR POR CATEGORÍA
         </button>
-        <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-lg shadow-lg mt-2 w-48">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Montacargas</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Plataformas</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Repuestos</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Herramientas</a>
+        <div class="absolute hidden group-hover:block bg-white text-emerald-500 rounded-lg shadow-lg mt-1 w-48">
+          <a href="#Montacargas" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Montacargas</a>
+          <a href="#Plataformas" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Plataformas</a>
+          <a href="#Repuestos" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Repuestos</a>
+          <a href="#Herramientas" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Herramientas</a>
+           <a href="#Mantenimiento" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Mantenimiento</a>
         </div>
       </div>
 
         <!-- Main Navigation -->
         <div class="flex items-center gap-8">
           <a href="#" class="nav-category active">Inicio</a>
-          <a href="#" class="nav-category">Tienda
-          </a>
-          
+          <!-- Dropdown: Tienda -->
+        <div class="relative group">
+          <a href="#" class="nav-category">Tienda</a>
+          <div  class="absolute hidden group-hover:block bg-white text-emerald-500 rounded-lg shadow-lg mt-4 w-48">
+            <a href="#catalogo" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Catálogo Completo</a>
+            <a href="#ofertas" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Ofertas Especiales</a>
+            <a href="#nuevos" class="block px-4 py-2 hover:bg-teal-500 hover:text-white">Nuevos Productos</a>
+          </div>
+        </div>
+        
           <a href="#" class="nav-category">Blog</a>
           <a href="#" class="nav-category">Sobre Nosotros</a>
           <a href="#" class="nav-category">Contacto</a>
@@ -231,7 +275,7 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+   <!-- HERO SECTION -->
   <main class="bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -261,10 +305,10 @@
           />
         </div>
 
-        <!-- Right Side - 2 Stacked Images -->
-        <div class="space-y-4">
-          <!-- Top Small Image -->
-          <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-36">
+        <!-- Right Side - 2 imágenes pequeñas (mitad del tamaño de la principal) -->
+        <div class="space-y-0">
+          <!-- Top Small Image - Mitad de la altura -->
+          <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center" style="height: 250px;">
             <img 
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PALLETS-KtDCT5QtFrf1uMvi0kOpRhOT41jD8y.jpg" 
               alt="Pallet Jacks" 
@@ -272,8 +316,8 @@
             />
           </div>
 
-          <!-- Bottom Large Image -->
-          <div class="bg-yellow-100 rounded-lg p-4 flex items-center justify-center h-48">
+          <!-- Bottom Image - Mitad de la altura -->
+          <div class="bg-yellow-100 rounded-lg p-4 flex items-center justify-center" style="height: 250px;">
             <img 
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MANTENIMIENTO-4nuttx369GXrHa2yihXDcpLF0H9roN.jpg" 
               alt="Mantenimiento" 
@@ -281,6 +325,7 @@
             />
           </div>
         </div>
+        
       </div>
     </div>
   </main>
