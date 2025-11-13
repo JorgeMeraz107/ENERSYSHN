@@ -1,0 +1,395 @@
+:root {
+      --primary-turquoise: #4DBFC8;
+      --accent-cyan: #20D8E0;
+      --dark-gray: #333333;
+      --light-gray: #F5F5F5;
+    }
+    
+    body {
+      background-color: #F5F5F5;
+      color: #333;
+    }
+
+    .btn-turquoise {
+      background-color: #4DBFC8;
+      transition: background-color 0.3s;
+    }
+
+    .btn-turquoise:hover {
+      background-color: #3A9BA7;
+    }
+
+    .hero-text-large {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .discount-badge {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #4DBFC8;
+    }
+
+    .nav-category {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: white;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .nav-category:hover {
+      border-bottom-color: #20D8E0;
+    }
+
+    .nav-category.active {
+      border-bottom-color: #20D8E0;
+      font-weight: 700;
+    }
+
+    /* Agregar estilos para dropdown con hover cyan */
+    .dropdown-menu {
+      position: absolute;
+      display: none;
+      background-color: white;
+      color: #333;
+      border-radius: 0px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin-top: 20px;
+      min-width: 200px;
+      z-index: 100;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 16px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+  
+    .dropdown-menu a:first-child:hover {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .dropdown-menu a:last-child:hover {
+      border-radius: 0 0 8px 8px;
+    }
+
+    .relative.group:hover .dropdown-menu {
+      display: block;
+    }
+    
+
+    /* Heart icon hover animation */
+    .heart-icon {
+      transition: all 0.3s ease;
+    }
+
+    .heart-icon:hover {
+      color: #E84C3D;
+      transform: scale(1.2);
+    }
+
+    .heart-icon.filled {
+      color: #E84C3D;
+      fill: currentColor;
+    }
+
+    /* WhatsApp floating button animations */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      animation: pulse-whatsapp 2s infinite;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      }
+      50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8);
+      }
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 80px;
+      background-color: #333;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .whatsapp-btn:hover .whatsapp-tooltip {
+      opacity: 1;
+    }
+
+/* Badge de notificación */
+.whatsapp-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff3b30;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse-badge 2s infinite;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.4);
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Chat interface */
+.whatsapp-chat {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-width: calc(100vw - 60px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 998;
+}
+
+.whatsapp-chat.active {
+  display: flex;
+}
+
+.chat-header {
+  background: #075E54;
+  color: white;
+  padding: 15px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.chat-status {
+  font-size: 12px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #4FCE5D;
+  border-radius: 50%;
+}
+
+.chat-close {
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.chat-close:hover {
+  opacity: 1;
+}
+
+.chat-body {
+  padding: 20px;
+  height: 300px;
+  overflow-y: auto;
+  background: #ECE5DD url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23D9D9D9" opacity="0.3"/></svg>');
+}
+
+.chat-message {
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-time {
+  font-size: 11px;
+  color: #667781;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.chat-footer {
+  padding: 15px;
+  background: #F0F0F0;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-send {
+  width: 45px;
+  height: 45px;
+  background: #25D366;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.chat-send:hover {
+  background: #20BA5A;
+}
+
+    @media (max-width: 768px) {
+      .hero-text-large {
+        font-size: 2rem;
+      }
+      
+      .discount-badge {
+        font-size: 2.5rem;
+      }
+    }
+
+/*Estilos para botones de opciones del chat inteligente */
+.chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-option-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 18px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-option-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.3s ease-out;
+}
+
+#cartSidebar {
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#cartItems::-webkit-scrollbar {
+  width: 6px;
+}
+
+#cartItems::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+  background: #14b8a6;
+  border-radius: 3px;
+}
+
+#cartItems::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}

@@ -4,375 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Enerhnsys - Renta y Mantenimiento de Equipos Industriales</title>
   </head>
   <body>
- 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --primary-turquoise: #4DBFC8;
-      --accent-cyan: #20D8E0;
-      --dark-gray: #333333;
-      --light-gray: #F5F5F5;
-    }
-    
-    
-    body {
-      background-color: #F5F5F5;
-      color: #333;
-    }
-
-    .btn-turquoise {
-      background-color: #4DBFC8;
-      transition: background-color 0.3s;
-    }
-
-    .btn-turquoise:hover {
-      background-color: #3A9BA7;
-    }
-
-    .hero-text-large {
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -1px;
-    }
-
-    .discount-badge {
-      font-size: 4rem;
-      font-weight: 900;
-      color: #4DBFC8;
-    }
-
-    .nav-category {
-      padding: 12px 16px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: white;
-      border-bottom: 3px solid transparent;
-      transition: all 0.3s;
-    }
-
-    .nav-category:hover {
-      border-bottom-color: #20D8E0;
-    }
-
-    .nav-category.active {
-      border-bottom-color: #20D8E0;
-      font-weight: 700;
-    }
-
-    /* Agregar estilos para dropdown con hover cyan */
-    .dropdown-menu {
-      position: absolute;
-      display: none;
-      background-color: white;
-      color: #333;
-      border-radius: 0px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      margin-top: 20px;
-      min-width: 200px;
-      z-index: 100;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 16px;
-      color: #333;
-      text-decoration: none;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-  
-    .dropdown-menu a:first-child:hover {
-      border-radius: 8px 8px 0 0;
-    }
-
-    .dropdown-menu a:last-child:hover {
-      border-radius: 0 0 8px 8px;
-    }
-
-    .relative.group:hover .dropdown-menu {
-      display: block;
-    }
-    
-
-    /* Heart icon hover animation */
-    .heart-icon {
-      transition: all 0.3s ease;
-    }
-
-    .heart-icon:hover {
-      color: #E84C3D;
-      transform: scale(1.2);
-    }
-
-    .heart-icon.filled {
-      color: #E84C3D;
-      fill: currentColor;
-    }
-
-    /* WhatsApp floating button animations */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      background-color: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      z-index: 999;
-      animation: pulse-whatsapp 2s infinite;
-      transition: transform 0.3s ease;
-      text-decoration: none;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-      animation: none;
-    }
-
-    @keyframes pulse-whatsapp {
-      0%, 100% {
-        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-      }
-      50% {
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8);
-      }
-    }
-
-    .whatsapp-tooltip {
-      position: absolute;
-      right: 80px;
-      background-color: #333;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .whatsapp-btn:hover .whatsapp-tooltip {
-      opacity: 1;
-    }
-
-    /* Badge de notificación */
-.whatsapp-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ff3b30;
-  color: white;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-  animation: pulse-badge 2s infinite;
-  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.4);
-}
-
-@keyframes pulse-badge {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-/* Chat interface */
-.whatsapp-chat {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  width: 350px;
-  max-width: calc(100vw - 60px);
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  display: none;
-  flex-direction: column;
-  z-index: 998;
-}
-
-.whatsapp-chat.active {
-  display: flex;
-}
-
-.chat-header {
-  background: #075E54;
-  color: white;
-  padding: 15px;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.chat-avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.chat-info {
-  flex: 1;
-}
-
-.chat-name {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.chat-status {
-  font-size: 12px;
-  opacity: 0.9;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: #4FCE5D;
-  border-radius: 50%;
-}
-
-.chat-close {
-  cursor: pointer;
-  font-size: 24px;
-  line-height: 1;
-  opacity: 0.8;
-}
-
-.chat-close:hover {
-  opacity: 1;
-}
-
-.chat-body {
-  padding: 20px;
-  height: 300px;
-  overflow-y: auto;
-  background: #ECE5DD url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23D9D9D9" opacity="0.3"/></svg>');
-}
-
-.chat-message {
-  background: white;
-  padding: 10px 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  max-width: 80%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.chat-time {
-  font-size: 11px;
-  color: #667781;
-  text-align: right;
-  margin-top: 5px;
-}
-
-.chat-footer {
-  padding: 15px;
-  background: #F0F0F0;
-  border-radius: 0 0 12px 12px;
-  display: flex;
-  gap: 10px;
-}
-
-.chat-input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 25px;
-  background: white;
-  outline: none;
-  font-size: 14px;
-}
-
-.chat-send {
-  width: 45px;
-  height: 45px;
-  background: #25D366;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s;
-}
-
-.chat-send:hover {
-  background: #20BA5A;
-}
-
-    @media (max-width: 768px) {
-      .hero-text-large {
-        font-size: 2rem;
-      }
-      
-      .discount-badge {
-        font-size: 2.5rem;
-      }
-    }
-
-    /* <CHANGE> Estilos para botones de opciones del chat inteligente */
-.chat-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.chat-option-btn {
-  background: #25D366;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 18px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.chat-option-btn:hover {
-  background: #20BA5A;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-  </style>
 </head>
 <body>
   <!-- TOP NOTIFICATION BAR -->
@@ -569,6 +206,93 @@
       </div>
     </div>
   </section>
+
+    <!-- CATEGORIES SECTION -->
+<section class="bg-gradient-to-b from-gray-50 to-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
+    <!-- Categories Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      
+      <!-- Montacargas -->
+      <a href="#Montacargas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Montacargas</h3>
+            <p class="text-sm text-gray-600">Equipos de carga industrial</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Plataformas -->
+      <a href="#Plataformas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Plataformas</h3>
+            <p class="text-sm text-gray-600">Elevadoras y de tijera</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Repuestos -->
+      <a href="#Repuestos" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Repuestos</h3>
+            <p class="text-sm text-gray-600">Piezas originales</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Herramientas -->
+      <a href="#Herramientas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Herramientas</h3>
+            <p class="text-sm text-gray-600">Equipamiento industrial</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Mantenimiento -->
+      <a href="#Mantenimiento" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-4">
+          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Mantenimiento</h3>
+            <p class="text-sm text-gray-600">Servicio especializado</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
 
   <!-- EXPANDED PRODUCTS SECTION - B2B Equipment -->
   <section class="bg-white py-12">
@@ -793,173 +517,295 @@
   </div>
 </div>
 
+ <!-- CARRITO DE COMPRAS SIDEBAR -->
+<div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col">
+  <!-- Header del carrito -->
+  <div class="bg-teal-500 text-white p-4 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-9 0h12M9 20a1 1 0 11-2 0 1 1 0 012 0m8 0a1 1 0 11-2 0 1 1 0 012 0"></path>
+      </svg>
+      <h2 class="text-xl font-bold">Mi Carrito</h2>
+      <span id="cartCount" class="bg-white text-teal-500 rounded-full px-2 py-0.5 text-sm font-bold">0</span>
+    </div>
+    <button onclick="toggleCart()" class="text-white hover:text-gray-200">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Contenido del carrito -->
+  <div class="flex-1 overflow-y-auto p-4">
+    <!-- Estado vacío -->
+    <div id="emptyCart" class="flex flex-col items-center justify-center h-full text-gray-400">
+      <svg class="w-24 h-24 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-9 0h12M9 20a1 1 0 11-2 0 1 1 0 012 0m8 0a1 1 0 11-2 0 1 1 0 012 0"></path>
+      </svg>
+      <p class="text-lg font-semibold mb-2">Tu carrito está vacío</p>
+      <p class="text-sm text-center">Agrega productos para comenzar tu cotización</p>
+    </div>
+
+    <!-- Lista de productos -->
+    <div id="cartItems" class="space-y-4 hidden"></div>
+  </div>
+
+  <!-- Footer con total y botones -->
+  <div id="cartFooter" class="border-t border-gray-200 p-4 bg-gray-50 hidden">
+    <div class="flex justify-between items-center mb-4">
+      <span class="text-gray-700 font-semibold">Subtotal:</span>
+      <span id="cartTotal" class="text-2xl font-bold text-teal-600">L.0.00</span>
+    </div>
+    <button onclick="proceedToCheckout()" class="w-full bg-teal-500 text-white py-3 rounded-lg font-bold hover:bg-teal-600 mb-2 transition">
+      Solicitar Cotización
+    </button>
+    <button onclick="clearCart()" class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">
+      Vaciar Carrito
+    </button>
+  </div>
+</div>
+
+<!-- Overlay oscuro -->
+<div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+<script src="script.js"></script>
+
+<!-- CARRITO -->
 <script>
-// <CHANGE> Sistema inteligente de chat con opciones y flujo conversacional
+//  Sistema completo de carrito de compras con localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-let conversationState = 'initial';
-
-function toggleChat() {
-  const chat = document.getElementById('whatsappChat');
-  chat.classList.toggle('active');
+// Inicializar carrito al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  updateCartUI();
+  updateCartBadge();
   
-  if (chat.classList.contains('active')) {
-    document.querySelector('.whatsapp-badge').style.display = 'none';
+  // Modificar el ícono del carrito para abrir el sidebar
+  const cartLinks = document.querySelectorAll('header a[href="#"]');
+  cartLinks.forEach(link => {
+    // Buscar el enlace que contiene el SVG del carrito (tiene un path con "M3 3h2l.4 2M7 13h10l4-8")
+    const cartSvg = link.querySelector('svg path[d*="M3 3h2l.4 2"]');
+    if (cartSvg) {
+      link.onclick = function(e) {
+        e.preventDefault();
+        toggleCart();
+      };
+    }
+  });
+});
+
+// Función para alternar el carrito
+function toggleCart() {
+  const sidebar = document.getElementById('cartSidebar');
+  const overlay = document.getElementById('cartOverlay');
+  
+  sidebar.classList.toggle('translate-x-full');
+  overlay.classList.toggle('hidden');
+  
+  if (!sidebar.classList.contains('translate-x-full')) {
+    updateCartUI();
   }
 }
 
-function selectOption(option) {
-  const chatBody = document.getElementById('chatBody');
-  const phoneNumber = '50492137292';
+// Agregar producto al carrito
+function addToCart(product) {
+  const existingProduct = cart.find(item => item.name === product.name);
   
-  let message = '';
-  let responseText = '';
-  
-  switch(option) {
-    case 'cotizar':
-      responseText = '📋 Perfecto, te ayudaré con la cotización.<br><br>Nuestros equipos disponibles:<br>• Montacargas (2-5T)<br>• Plataformas elevadoras<br>• Pallet Jacks<br><br>¿Quieres conectar con un asesor para detalles?';
-      message = 'Hola, me gustaría cotizar equipos industriales';
-      conversationState = 'cotizar';
-      break;
-    
-    case 'mantenimiento':
-      responseText = '🔧 Ofrecemos servicios de mantenimiento:<br>• Preventivo<br>• Correctivo<br>• Inspecciones<br><br>¿Te conecto con nuestro especialista?';
-      message = 'Necesito información sobre mantenimiento de equipos';
-      conversationState = 'mantenimiento';
-      break;
-    
-    case 'repuestos':
-      responseText = '⚙️ Tenemos repuestos originales para:<br>• Montacargas<br>• Sistemas hidráulicos<br>• Baterías<br><br>¿Hablamos con un técnico?';
-      message = 'Busco repuestos para equipos industriales';
-      conversationState = 'repuestos';
-      break;
-    
-    case 'asesor':
-      message = 'Hola, necesito hablar con un asesor de ventas';
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-      addBotMessage('✅ Te estamos conectando con un asesor. En breve te atenderán por WhatsApp.');
-      return;
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cart.push({
+      ...product,
+      quantity: 1
+    });
   }
   
-  // Agregar mensaje del usuario
-  addUserMessage(option);
+  saveCart();
+  updateCartUI();
+  updateCartBadge();
+  showNotification('Producto agregado al carrito');
+}
+
+// Eliminar producto del carrito
+function removeFromCart(productName) {
+  cart = cart.filter(item => item.name !== productName);
+  saveCart();
+  updateCartUI();
+  updateCartBadge();
+}
+
+// Actualizar cantidad de producto
+function updateQuantity(productName, change) {
+  const product = cart.find(item => item.name === productName);
+  if (product) {
+    product.quantity += change;
+    if (product.quantity <= 0) {
+      removeFromCart(productName);
+    } else {
+      saveCart();
+      updateCartUI();
+      updateCartBadge();
+    }
+  }
+}
+
+// Guardar carrito en localStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Actualizar interfaz del carrito
+function updateCartUI() {
+  const emptyCart = document.getElementById('emptyCart');
+  const cartItems = document.getElementById('cartItems');
+  const cartFooter = document.getElementById('cartFooter');
   
-  // Agregar respuesta del bot con botones
-  setTimeout(() => {
-    const botMsg = document.createElement('div');
-    botMsg.className = 'chat-message';
-    botMsg.innerHTML = `
-      ${responseText}
-      <div class="chat-options">
-        <button class="chat-option-btn" onclick="contactAdvisor('${message}')">✅ Sí, conectar</button>
-        <button class="chat-option-btn" onclick="resetChat()">🔄 Volver al inicio</button>
+  if (cart.length === 0) {
+    emptyCart.classList.remove('hidden');
+    cartItems.classList.add('hidden');
+    cartFooter.classList.add('hidden');
+  } else {
+    emptyCart.classList.add('hidden');
+    cartItems.classList.remove('hidden');
+    cartFooter.classList.remove('hidden');
+    
+    // <CHANGE> Actualizar renderizado de productos con imágenes
+cartItems.innerHTML = cart.map(item => `
+  <div class="bg-white border border-gray-200 rounded-lg p-3 shadow-sm">
+    <div class="flex gap-3 mb-2">
+      <!-- IMAGEN DEL PRODUCTO -->
+      <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
       </div>
-      <div class="chat-time">${getCurrentTime()}</div>
-    `;
-    chatBody.appendChild(botMsg);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }, 800);
+      
+      <!-- INFO DEL PRODUCTO -->
+      <div class="flex-1">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="font-semibold text-gray-900 text-sm">${item.name}</h3>
+            <p class="text-xs text-gray-500">${item.description}</p>
+          </div>
+          <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CONTROLES DE CANTIDAD Y PRECIO -->
+    <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100">
+      <div class="flex items-center gap-2">
+        <button onclick="updateQuantity('${item.name}', -1)" class="bg-gray-200 hover:bg-gray-300 rounded px-2 py-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+          </svg>
+        </button>
+        <span class="font-semibold px-2 min-w-[30px] text-center">${item.quantity}</span>
+        <button onclick="updateQuantity('${item.name}', 1)" class="bg-gray-200 hover:bg-gray-300 rounded px-2 py-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+        </button>
+      </div>
+      <span class="text-lg font-bold text-teal-600">L.${(item.price * item.quantity).toLocaleString()}</span>
+    </div>
+  </div>
+`).join('');
+    
+    // Actualizar total
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById('cartTotal').textContent = `L.${total.toLocaleString()}`;
+  }
 }
 
-function contactAdvisor(message) {
+// Actualizar badge del carrito
+function updateCartBadge() {
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badges = document.querySelectorAll('.absolute.bg-red-500, #cartCount');
+  badges.forEach(badge => {
+    badge.textContent = totalItems;
+  });
+}
+
+// Limpiar carrito
+function clearCart() {
+  if (confirm('¿Estás seguro que deseas vaciar el carrito?')) {
+    cart = [];
+    saveCart();
+    updateCartUI();
+    updateCartBadge();
+    showNotification('Carrito vaciado');
+  }
+}
+
+// Proceder al checkout
+function proceedToCheckout() {
+  if (cart.length === 0) return;
+  
+  // Crear mensaje para WhatsApp
   const phoneNumber = '50492137292';
+  let message = '¡Hola! Me gustaría cotizar los siguientes productos:\n\n';
+  
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} x${item.quantity} - L.${(item.price * item.quantity).toLocaleString()}\n`;
+  });
+  
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  message += `\n*Total: L.${total.toLocaleString()}*\n\n¿Podrían enviarme más información?`;
+  
+  // Abrir WhatsApp
   window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-  addBotMessage('✅ Perfecto! Te hemos redirigido a WhatsApp. Uno de nuestros asesores te atenderá enseguida. 👨‍💼');
 }
 
-function addUserMessage(option) {
-  const chatBody = document.getElementById('chatBody');
-  const optionTexts = {
-    'cotizar': '💰 Quiero cotizar un equipo',
-    'mantenimiento': '🔧 Necesito mantenimiento',
-    'repuestos': '⚙️ Busco repuestos',
-    'asesor': '👤 Hablar con asesor'
-  };
-  
-  const userMsg = document.createElement('div');
-  userMsg.className = 'chat-message';
-  userMsg.style.background = '#DCF8C6';
-  userMsg.style.marginLeft = 'auto';
-  userMsg.innerHTML = `
-    ${optionTexts[option]}
-    <div class="chat-time">${getCurrentTime()}</div>
-  `;
-  chatBody.appendChild(userMsg);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-function addBotMessage(text) {
-  const chatBody = document.getElementById('chatBody');
-  setTimeout(() => {
-    const botMsg = document.createElement('div');
-    botMsg.className = 'chat-message';
-    botMsg.innerHTML = `
-      ${text}
-      <div class="chat-time">${getCurrentTime()}</div>
-    `;
-    chatBody.appendChild(botMsg);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }, 600);
-}
-
-function resetChat() {
-  const chatBody = document.getElementById('chatBody');
-  chatBody.innerHTML = `
-    <div class="chat-message">
-      ¡Hola! 👋 Bienvenido a <strong>ENERHNSYS</strong><br><br>
-      Somos especialistas en equipos industriales. ¿Cómo podemos ayudarte?
-      <div class="chat-options">
-        <button class="chat-option-btn" onclick="selectOption('cotizar')">💰 Cotizar Equipo</button>
-        <button class="chat-option-btn" onclick="selectOption('mantenimiento')">🔧 Mantenimiento</button>
-        <button class="chat-option-btn" onclick="selectOption('repuestos')">⚙️ Repuestos</button>
-        <button class="chat-option-btn" onclick="selectOption('asesor')">👤 Hablar con Asesor</button>
-      </div>
-      <div class="chat-time">Ahora</div>
+// Notificación
+function showNotification(text) {
+  const notification = document.createElement('div');
+  notification.className = 'fixed top-20 right-4 bg-teal-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in-down';
+  notification.innerHTML = `
+    <div class="flex items-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+      <span>${text}</span>
     </div>
   `;
-  conversationState = 'initial';
-}
-
-function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const message = input.value.trim();
+  document.body.appendChild(notification);
   
-  if (message) {
-    const phoneNumber = '50492137292';
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    input.value = '';
-  }
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
 }
 
-function handleKeyPress(event) {
-  if (event.key === 'Enter') {
-    sendMessage();
-  }
-}
-
-function getCurrentTime() {
-  const now = new Date();
-  return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-}
+//  Modificar todos los botones "Info" para agregar productos al carrito
+document.addEventListener('DOMContentLoaded', function() {
+  const products = [
+    { name: 'Montacargas Crown 2.5T', description: 'Motor Diésel/Gas', price: 120000 , image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhISEhMVFhUXGRkYGRcWFRUVGBkaGRgZGBkYFhcYHSggGBolGxkbITEiJSktLi4uGB8zODMtNygtLisBCgoKDg0OGhAQGi0lHR0rLS0tLy0rNSstMC0rLS0rLSsuKy4tKzctLS0tLS0tLTc3LS03KysrKy0rKy0tKystK//AABEIOEApQM...' },
+    { name: 'Montacargas Yale 3T', description: 'Altura 3mts', price: 200000 , image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTERUTExIVFhUVFRUXFRYYGBgYGBgWGBIaGBUXGBUYHCkgGBolGxMVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGy0mHR0tLS4tLjcvLS0rLS8tLS03LS0tKy0tMC0vLS0tLSstNS0tLSswLS0tLSsvLS0tLy0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAABQcEBgIDCAH...' },
+    { name: 'Montacargas Genie 2T', description: 'Eléctrico/Batería', price: 170000 , image: 'https://gamrentals.com/media/images/catalogo/maquinas/genie-gs-2646-peru.jpg' },
+    { name: 'Pallet Jack Manual 2.5T', description: 'Uso Industrial', price: 22500 , image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PALLETS-KtDCT5QtFrf1uMvi0kOpRhOT41jD8y.jpg' },
+    { name: 'Elevador de Tijera 3T', description: 'Altura 3-4 mts', price: 150000 , image: 'https://grupoindustronic.com/wp-content/uploads/2022/11/BPA-12V210AH.png'},
+    { name: 'Batería Plomo Ácido', description: 'Repuestos Originales', price: 30000, image: 'https://res.cloudinary.com/duuporwnz/image/upload/v1762808540/Electricidad-Residencial---Enerhnsys_q4ahyb.jpg' },
+    { name: 'Mantenimiento Preventivo', description: 'Visita Técnica', price: 13000, image: 'https://res.cloudinary.com/duuporwnz/image/upload/v1762808540/Electricidad-Residencial---Enerhnsys_q4ahyb.jpg' }
+  ];
+  
+  const infoButtons = document.querySelectorAll('.btn-turquoise');
+  infoButtons.forEach((btn, index) => {
+    if (btn.textContent.includes('Info') && products[index]) {
+      btn.textContent = 'Agregar';
+      btn.onclick = function(e) {
+        e.preventDefault();
+        addToCart(products[index]);
+        this.textContent = '✓ Agregado';
+        setTimeout(() => {
+          this.textContent = 'Agregar';
+        }, 1500);
+      };
+    }
+  });
+});
 </script>
 
-  <!-- SCRIPTS -->
-  <script>
-    // add to cart functionality
-    document.querySelectorAll('.btn-turquoise').forEach(btn => {
-      btn.addEventListener('click', function() {
-        if (this.textContent.includes('Añadir')) {
-          const cartBadge = document.querySelector('[href="#"] span');
-          if (cartBadge) {
-            let count = parseInt(cartBadge.textContent || 0);
-            cartBadge.textContent = count + 1;
-          }
-          this.textContent = 'Añadido!';
-          setTimeout(() => {
-            this.textContent = 'Añadir';
-          }, 1500);
-        }
-      });
-    });
-  </script>
 </body>
 </html>
