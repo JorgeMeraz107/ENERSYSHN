@@ -10,6 +10,21 @@
   <body>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'teal': {
+            500: '#14b8a6',
+            600: '#0d9488',
+          }
+        }
+      }
+    }
+  }
+</script>
 </head>
 <body>
   <!-- TOP NOTIFICATION BAR -->
@@ -18,50 +33,80 @@
   </div>
 
  <!-- HEADER -->
-  <header class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <!-- Logo -->
-        <div class="flex items-center gap-3">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-zOgngHaea98pjwumCvYJuLyXA2DT54.png" alt="Enerhnsys" class="h-16 w-16"/>
-          <span class="text-2xl font-bold text-gray-900">ENERHNSYS</span>
-        </div>
+  <!-- Header completamente responsive con menú móvil -->
+<header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3 sm:py-4">
+      <!-- Logo responsive -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-zOgngHaea98pjwumCvYJuLyXA2DT54.png" alt="Enerhnsys" class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16"/>
+        <span class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors">ENERHNSYS</span>
+      </div>
 
-        <!-- Search Bar (desktop) -->
-        <div class="hidden md:flex flex-1 mx-8">
-          <input 
-            type="text" 
-            placeholder="Buscar productos..." 
-            class="w-full px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-          />
-          <button class="btn-turquoise text-white px-6 py-3 rounded-r-lg font-semibold hover:bg-teal-600">
-            BUSCAR
-          </button>
-        </div>
+        <!-- Search Bar (tablet y desktop) -->
+      <div class="hidden lg:flex flex-1 mx-4 xl:mx-8">
+        <input 
+          type="text" 
+          placeholder="Buscar productos..." 
+          class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-colors text-sm md:text-base"
+        />
+        <button class="btn-turquoise text-white px-4 py-2 md:px-6 md:py-3 rounded-r-lg font-semibold hover:bg-teal-600 text-sm md:text-base whitespace-nowrap">
+          BUSCAR
+        </button>
+      </div>
+
 
         <!-- Right Icons -->
-        <div class="flex items-center gap-6">
-          <!-- Added heart icon for favorites -->
-          <button class="heart-icon transition" onclick="this.classList.toggle('filled')">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-            </svg>
-          </button>
+
+         <!-- Theme toggle button -->
+        <button id="themeToggle" class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <svg id="sunIcon" class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 hidden transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+         <div class="flex items-center gap-3 sm:gap-4 md:gap-6">
+        <!-- Heart icon -->
+        <button class="heart-icon transition hidden sm:block" onclick="this.classList.toggle('filled')">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+        </button>
 
           <!-- Cart icon -->
-          <a href="#" class="relative">
-            <svg class="w-6 h-6 text-gray-600 hover:text-teal-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-9 0h12M9 20a1 1 0 11-2 0 1 1 0 012 0m8 0a1 1 0 11-2 0 1 1 0 012 0"></path>
-            </svg>
-            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">0</span>
-          </a>
-        </div>
+        <a href="#" class="relative">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-9 0h12M9 20a1 1 0 11-2 0 1 1 0 012 0m8 0a1 1 0 11-2 0 1 1 0 012 0"></path>
+          </svg>
+          <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 sm:px-2 py-0.5">0</span>
+        </a>
       </div>
     </div>
+
+     <!-- Search Bar móvil (solo visible en móviles) -->
+    <div class="lg:hidden pb-3">
+      <div class="flex">
+        <input 
+          type="text" 
+          placeholder="Buscar productos..." 
+          class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-colors text-sm"
+        />
+        <button class="btn-turquoise text-white px-4 py-2 rounded-r-lg font-semibold hover:bg-teal-600 text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
   </header>
 
+  
   <!-- NAVIGATION BAR -->
-<nav class="bg-teal-500 relative z-50">
+<nav class="bg-teal-500 dark:bg-gray-900 relative z-50  dark:border-gray-700"">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between">
       
@@ -108,184 +153,187 @@
     </div>
   </nav>
 
-   <!-- HERO SECTION -->
-  <main class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <!-- Left Side - Text Content -->
-        <div class="space-y-8">
-          <div>
-            <p class="text-gray-600 text-lg font-semibold mb-2">EQUIPOS INDUSTRIALES DE CALIDAD</p>
-            <h1 class="hero-text-large text-gray-900">RENTA DE MONTACARGAS</h1>
-          </div>
-
-          <div class="space-y-4">
-            <div class="discount-badge">DESDE</div>
-            <p class="text-gray-600 text-lg">$ 2,000.00 LA RENTA</p>
-          </div>
-
-          <button class="btn-turquoise text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-teal-600">
-            COTIZAR AHORA
-          </button>
+    <!-- HERO SECTION -->
+  <!-- Hero responsive con grid adaptable y tamaños de texto escalables -->
+<main class="bg-white dark:bg-gray-900 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+      
+      <!-- Left Side - Text Content responsive -->
+      <div class="space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left">
+        <div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg font-semibold mb-2">EQUIPOS INDUSTRIALES DE CALIDAD</p>
+          <h1 class="hero-text-large text-gray-900 dark:text-white leading-tight">RENTA DE MONTACARGAS</h1>
         </div>
 
-        <!-- Center - Main Product Image -->
-        <div class="flex justify-center items-center">
+        <div class="space-y-2 sm:space-y-4">
+          <div class="discount-badge">DESDE</div>
+          <p class="text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl">$ 2,000.00 LA RENTA</p>
+        </div>
+
+        <button class="btn-turquoise text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-teal-600 w-full sm:w-auto">
+          COTIZAR AHORA
+        </button>
+      </div>
+
+      <!-- Center - Main Product Image responsive -->
+      <div class="flex justify-center items-center order-first lg:order-none">
+        <img 
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MONTA-CARGAS-AZUL-ymb6XnH3XKwgCRzpi03PKnsSdJIRn1.jpg" 
+          alt="Montacargas Principal" 
+          class="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto object-contain"
+        />
+      </div>
+
+      <!-- Right Side - 2 imágenes responsive -->
+      <div class="grid grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-4 lg:gap-0">
+        <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-2 sm:p-4 flex items-center justify-center h-32 sm:h-48 lg:h-56">
           <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MONTA-CARGAS-AZUL-ymb6XnH3XKwgCRzpi03PKnsSdJIRn1.jpg" 
-            alt="Montacargas Principal" 
-            class="w-full max-w-sm h-auto object-contain"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PALLETS-KtDCT5QtFrf1uMvi0kOpRhOT41jD8y.jpg" 
+            alt="Pallet Jacks" 
+            class="w-full h-full object-contain"
           />
         </div>
 
-        <!-- Right Side - 2 imágenes pequeñas (mitad del tamaño de la principal) -->
-        <div class="space-y-0">
-          <!-- Top Small Image - Mitad de la altura -->
-          <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center" style="height: 250px;">
-            <img 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PALLETS-KtDCT5QtFrf1uMvi0kOpRhOT41jD8y.jpg" 
-              alt="Pallet Jacks" 
-              class="w-full h-full object-contain"
-            />
-          </div>
-
-          <!-- Bottom Image - Mitad de la altura -->
-          <div class="bg-yellow-100 rounded-lg p-4 flex items-center justify-center" style="height: 250px;">
-            <img 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MANTENIMIENTO-4nuttx369GXrHa2yihXDcpLF0H9roN.jpg" 
-              alt="Mantenimiento" 
-              class="w-full h-full object-contain"
-            />
-          </div>
+        <div class="bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-2 sm:p-4 flex items-center justify-center h-32 sm:h-48 lg:h-56">
+          <img 
+            src="http://hebbkx1anhila5yf.public.blob.vercel-storage.com/MANTENIMIENTO-4nuttx369GXrHa2yihXDcpLF0H9roN.jpg" 
+            alt="Mantenimiento" 
+            class="w-full h-full object-contain"
+          />
         </div>
-        
       </div>
     </div>
-  </main>
+  </div>
+</main>
+
 
   <!-- BENEFITS SECTION -->
-  <section class="bg-gray-50 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-        <div class="space-y-2">
-          <div class="flex justify-center">
-            <svg class="w-8 h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-sm">Renta Flexible</h4>
-          <p class="text-xs text-gray-600">Mensual o Diaria</p>
+  <!-- Benefits con grid totalmente responsive -->
+<section class="bg-gray-50 dark:bg-gray-800 py-6 sm:py-8 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+      <div class="space-y-2 p-4 bg-white dark:bg-gray-700 rounded-lg">
+        <div class="flex justify-center">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+          </svg>
         </div>
-        <div class="space-y-2">
-          <div class="flex justify-center">
-            <svg class="w-8 h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 1C5.9 1 1 5.9 1 12s4.9 11 11 11 11-4.9 11-11S18.1 1 12 1zm0 20c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-sm">Equipo Certificado</h4>
-          <p class="text-xs text-gray-600">100% Funcionando</p>
+        <h4 class="font-semibold text-sm sm:text-base dark:text-white">Renta Flexible</h4>
+        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Mensual</p>
+      </div>
+      
+      <div class="space-y-2 p-4 bg-white dark:bg-gray-700 rounded-lg">
+        <div class="flex justify-center">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 1C5.9 1 1 5.9 1 12s4.9 11 11 11 11-4.9 11-11S18.1 1 12 1zm0 20c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+          </svg>
         </div>
-        <div class="space-y-2">
-          <div class="flex justify-center">
-            <svg class="w-8 h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-sm">Mantenimiento Incluido</h4>
-          <p class="text-xs text-gray-600">Sin Costo Adicional</p>
+        <h4 class="font-semibold text-sm sm:text-base dark:text-white">Equipo Certificado</h4>
+        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300">100% Funcionando</p>
+      </div>
+      
+      <div class="space-y-2 p-4 bg-white dark:bg-gray-700 rounded-lg">
+        <div class="flex justify-center">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+          </svg>
         </div>
-        <div class="space-y-2">
-          <div class="flex justify-center">
-            <svg class="w-8 h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-sm">Soporte 24/7</h4>
-          <p class="text-xs text-gray-600">Asistencia Rápida</p>
+        <h4 class="font-semibold text-sm sm:text-base dark:text-white">Mantenimiento Incluido</h4>
+        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Sin Costo Adicional</p>
+      </div>
+      
+      <div class="space-y-2 p-4 bg-white dark:bg-gray-700 rounded-lg">
+        <div class="flex justify-center">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
+          </svg>
         </div>
+        <h4 class="font-semibold text-sm sm:text-base dark:text-white">Soporte 24/7</h4>
+        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Asistencia Rápida</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
     <!-- CATEGORIES SECTION -->
-<section class="bg-gradient-to-b from-gray-50 to-white py-16">
+    <!-- Categorías con grid responsive adaptable a todos los dispositivos -->
+<section class="bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 py-8 sm:py-12 md:py-16 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  
-    <!-- Categories Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
       
       <!-- Montacargas -->
-      <a href="#Montacargas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
-        <div class="flex flex-col items-center text-center space-y-4">
-          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="#Montacargas" class="group bg-white dark:bg-gray-700 rounded-xl p-3 sm:p-4 md:p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-2 sm:space-y-3 md:space-y-4">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-teal-50 dark:bg-teal-900/30 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Montacargas</h3>
-            <p class="text-sm text-gray-600">Equipos de carga industrial</p>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1 group-hover:text-teal-600 transition-colors">Montacargas</h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hidden sm:block">Equipos de carga industrial</p>
           </div>
         </div>
       </a>
 
       <!-- Plataformas -->
-      <a href="#Plataformas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
-        <div class="flex flex-col items-center text-center space-y-4">
-          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="#Plataformas" class="group bg-white dark:bg-gray-700 rounded-xl p-3 sm:p-4 md:p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-2 sm:space-y-3 md:space-y-4">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-teal-50 dark:bg-teal-900/30 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Plataformas</h3>
-            <p class="text-sm text-gray-600">Elevadoras y de tijera</p>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1 group-hover:text-teal-600 transition-colors">Plataformas</h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hidden sm:block">Elevadoras y de tijera</p>
           </div>
         </div>
       </a>
 
       <!-- Repuestos -->
-      <a href="#Repuestos" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
-        <div class="flex flex-col items-center text-center space-y-4">
-          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="#Repuestos" class="group bg-white dark:bg-gray-700 rounded-xl p-3 sm:p-4 md:p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-2 sm:space-y-3 md:space-y-4">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-teal-50 dark:bg-teal-900/30 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Repuestos</h3>
-            <p class="text-sm text-gray-600">Piezas originales</p>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1 group-hover:text-teal-600 transition-colors">Repuestos</h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hidden sm:block">Piezas originales</p>
           </div>
         </div>
       </a>
 
       <!-- Herramientas -->
-      <a href="#Herramientas" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
-        <div class="flex flex-col items-center text-center space-y-4">
-          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="#Herramientas" class="group bg-white dark:bg-gray-700 rounded-xl p-3 sm:p-4 md:p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 hover:border-teal-500">
+        <div class="flex flex-col items-center text-center space-y-2 sm:space-y-3 md:space-y-4">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-teal-50 dark:bg-teal-900/30 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Herramientas</h3>
-            <p class="text-sm text-gray-600">Equipamiento industrial</p>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1 group-hover:text-teal-600 transition-colors">Herramientas</h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hidden sm:block">Equipamiento industrial</p>
           </div>
         </div>
       </a>
 
       <!-- Mantenimiento -->
-      <a href="#Mantenimiento" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-teal-500">
-        <div class="flex flex-col items-center text-center space-y-4">
-          <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-            <svg class="w-8 h-8 text-teal-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="#Mantenimiento" class="group bg-white dark:bg-gray-700 rounded-xl p-3 sm:p-4 md:p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 hover:border-teal-500 col-span-2 sm:col-span-1">
+        <div class="flex flex-col items-center text-center space-y-2 sm:space-y-3 md:space-y-4">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-teal-50 dark:bg-teal-900/30 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2 group-hover:text-teal-600 transition-colors">Mantenimiento</h3>
-            <p class="text-sm text-gray-600">Servicio especializado</p>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg mb-1 group-hover:text-teal-600 transition-colors">Mantenimiento</h3>
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hidden sm:block">Servicio especializado</p>
           </div>
         </div>
       </a>
@@ -295,10 +343,10 @@
 </section>
 
   <!-- EXPANDED PRODUCTS SECTION - B2B Equipment -->
-  <section class="bg-white py-12">
+  <section class="bg-white dark:bg-gray-900 py-8 sm:py-12 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-900">Equipos Disponibles</h2>
+        <h2 class="lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors">Equipos Disponibles</h2>
         <a href="#" class="text-teal-500 font-semibold hover:text-teal-600">Ver Catálogo Completo</a>
       </div>
 
@@ -428,41 +476,41 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-300">
+  <!-- FOOTER --> 
+  <footer class="bg-gray-900 text-gray-300 dark:bg-teal-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
-          <h3 class="text-white font-bold mb-4">Acerca de Enerhnsys</h3>
-          <p class="text-sm text-gray-400">Soluciones en renta y mantenimiento de equipos industriales con más de 10 años de experiencia.</p>
+          <h3 class="text-white font-bold mb-4 ">Acerca de Enerhnsys</h3>
+          <p class="text-sm text-gray-400 dark:text-white">Soluciones en renta y mantenimiento de equipos industriales con más de 10 años de experiencia.</p>
         </div>
         <div>
           <h3 class="text-white font-bold mb-4">Enlaces Rápidos</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-teal-500">Inicio</a></li>
-            <li><a href="#" class="hover:text-teal-500">Equipos</a></li>
-            <li><a href="#" class="hover:text-teal-500">Servicios</a></li>
-            <li><a href="#" class="hover:text-teal-500">Contacto</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Inicio</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Equipos</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Servicios</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Contacto</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-white font-bold mb-4">Servicios</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-teal-500">Renta de Equipos</a></li>
-            <li><a href="#" class="hover:text-teal-500">Mantenimiento</a></li>
-            <li><a href="#" class="hover:text-teal-500">Reparación</a></li>
-            <li><a href="#" class="hover:text-teal-500">Repuestos</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Renta de Equipos</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Mantenimiento</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Reparación</a></li>
+            <li><a href="#" class="hover:text-teal-500 dark:text-white">Repuestos</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-white font-bold mb-4">Contacto</h3>
-          <p class="text-sm text-gray-400">San Pedro Sula, Honduras</p>
-          <p class="text-sm text-gray-400">Email: ventas@enerhnsys.com</p>
-          <p class="text-sm text-gray-400">Teléfono: +504 9213-7292</p>
-          <p class="text-sm text-gray-400">WhatsApp: +504 9213-7292</p>
+          <p class="text-sm text-gray-400 dark:text-white">San Pedro Sula, Honduras</p>
+          <p class="text-sm text-gray-400 dark:text-white">Email: ventas@enerhnsys.com</p>
+          <p class="text-sm text-gray-400 dark:text-white">Teléfono: +504 9213-7292</p>
+          <p class="text-sm text-gray-400 dark:text-white">WhatsApp: +504 9213-7292</p>
         </div>
       </div>
-      <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+      <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400 dark:text-white">
         <p>&copy; 2025 Enerhnsys. Todos los derechos reservados.</p>
       </div>
     </div>
@@ -506,6 +554,8 @@
     <div class="chat-time">Ahora</div>
   </div>
 </div>
+
+
   
   <div class="chat-footer">
     <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
@@ -805,6 +855,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+</script>
+
+<script>
+// <CHANGE> Inicialización del tema con transiciones suaves
+(function() {
+  // Cargar tema guardado o usar el preferido del sistema
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
+// Función para cambiar el tema
+function toggleTheme() {
+  const html = document.documentElement;
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+  
+  // Toggle de la clase dark
+  html.classList.toggle('dark');
+  
+  // Cambiar iconos
+  sunIcon.classList.toggle('hidden');
+  moonIcon.classList.toggle('hidden');
+  
+  // Guardar preferencia
+  const theme = html.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('theme', theme);
+}
 </script>
 
 </body>
